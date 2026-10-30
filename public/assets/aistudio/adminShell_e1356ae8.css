@@ -1,0 +1,687 @@
+
+/* Long-term Design System Tokens for Admin & Staff Workspace */
+:root {
+  --admin-workspace-bg: #fffefc;
+  --admin-sidebar-bg: #292929;
+  --admin-text-main: #1e293b;
+  --admin-text-muted: #64748b;
+  --admin-accent: #ff772e;
+}
+
+
+/* The shared, full-display administrator shell. */
+html, body {
+  width: 100%;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body[data-screen^="Admin"] {
+  padding: 0;
+  display: block;
+  background: #fffefc;
+}
+
+body[data-screen^="Admin"] .canvas {
+  width: 100vw;
+  max-width: none;
+  min-height: 100vh;
+  height: 100vh;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #292929;
+}
+
+body[data-screen^="Admin"] .main-viewport,
+body[data-screen^="Admin"] .kitchen-viewport,
+.admin-workspace-view {
+  background: var(--admin-workspace-bg, #fffefc) !important;
+  color: var(--admin-text-main, #1e293b);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  padding: 32px 36px 24px 36px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: visible;
+}
+
+body[data-screen^="Admin"] .page-header,
+body[data-screen^="Admin"] .kitchen-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 60px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+body[data-screen^="Admin"] .sidebar,
+.opening-admin-shell {
+  width: 286px;
+  height: 100vh;
+  padding: 28px 18px 20px;
+  background: #292929;
+  color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow-anchor: none;
+  border-right: none;
+  z-index: 20;
+}
+
+.admin-shell-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-shell-header .admin-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ff772e;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.admin-shell-header strong,
+.admin-shell-header span {
+  display: block;
+}
+
+.admin-shell-header strong {
+  font-size: 14px;
+  color: #fff;
+}
+
+.admin-shell-header span {
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.opening-admin-shell .admin-nav-list,
+body[data-screen^="Admin"] .sidebar .admin-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding-top: 24px;
+}
+
+.opening-admin-shell .admin-nav-item,
+body[data-screen^="Admin"] .sidebar .admin-nav-item {
+  position: relative;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #d9d9d9;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.opening-admin-shell .admin-nav-item svg,
+body[data-screen^="Admin"] .sidebar .admin-nav-item svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.opening-admin-shell .admin-nav-item:hover,
+.opening-admin-shell .admin-nav-item.active,
+body[data-screen^="Admin"] .sidebar .admin-nav-item:hover,
+body[data-screen^="Admin"] .sidebar .admin-nav-item.active {
+  color: #ff772e;
+  background: rgba(255, 119, 46, 0.16);
+}
+
+/* ========================================================
+   SIDEBAR ACCOUNT FOOTER: EMAIL ID -> USER SETTINGS & DIRECT SIGN OUT TEXT
+   ======================================================== */
+.admin-account-footer {
+  margin-top: auto;
+  width: 100%;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-user-settings-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f8fafc;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.admin-user-settings-trigger:hover {
+  background: rgba(255, 119, 46, 0.14);
+  border-color: rgba(255, 119, 46, 0.4);
+}
+
+.admin-user-initial {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 119, 46, 0.24);
+  color: #ff772e;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.admin-user-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-user-meta strong {
+  font-size: 13px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-user-email-id {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-user-settings-trigger:hover .admin-user-email-id {
+  color: #ffb085;
+}
+
+.admin-signout-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 12px 2px;
+}
+
+.admin-signout-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: color 0.16s ease;
+}
+
+.admin-signout-text:hover,
+.admin-signout-text:focus-visible {
+  color: #ff772e;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* ========================================================
+   USER SETTINGS MODAL INTERFACE
+   ======================================================== */
+.cm-user-settings-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  padding: 20px;
+}
+
+.cm-user-settings-backdrop.is-open {
+  display: flex;
+}
+
+.cm-user-settings-card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  color: #1e293b;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.28);
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  animation: cmModalSpringIn 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.cm-user-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: #1e293b;
+  color: #ffffff;
+}
+
+.cm-user-settings-head-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cm-user-settings-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ff772e;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.cm-user-settings-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.cm-user-settings-subtitle {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.cm-user-settings-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.cm-user-settings-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.cm-user-settings-form {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cm-user-settings-alert {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cm-user-settings-alert.is-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+.cm-user-settings-alert.is-success {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #059669;
+}
+
+.cm-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cm-settings-section-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cm-optional-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #64748b;
+  text-transform: none;
+}
+
+.cm-settings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cm-settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cm-settings-field label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.cm-settings-field input {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 13.5px;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.cm-settings-field input:focus {
+  border-color: #ff772e;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 119, 46, 0.15);
+}
+
+.cm-user-settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  gap: 12px;
+}
+
+.cm-settings-signout-btn {
+  padding: 9px 14px;
+  border-radius: 10px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cm-settings-signout-btn:hover {
+  background: #fee2e2;
+}
+
+.cm-settings-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cm-settings-cancel-btn {
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cm-settings-save-btn {
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #ff772e 0%, #ff5500 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 119, 46, 0.3);
+}
+
+/* Top-Right POS Toggle Button (Frontend Optimization.md) */
+.top-pos-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  background: linear-gradient(135deg, #FF772E 0%, #FF5500 100%);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(255, 119, 46, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.top-pos-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 119, 46, 0.45);
+  color: #FFFFFF;
+}
+
+/* ========================================================
+   ISOLATED SIDEBAR & STATIONARY WORKSPACE
+   ======================================================== */
+.opening-admin-shell,
+body[data-screen^="Admin"] .sidebar {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+  will-change: auto;
+}
+
+body[data-screen^="Admin"] .main-viewport,
+body[data-screen^="Admin"] .kitchen-viewport {
+  transform: none !important;
+  animation: none !important;
+}
+
+/* ========================================================
+   DESKTOP TO MOBILE FLEXIBLE INTERFACE (ADMIN SHELL)
+   ======================================================== */
+.cm-mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1100;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #292929;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cm-mobile-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 1040;
+}
+
+@media (max-width: 1024px) {
+  body[data-screen^="Admin"] .sidebar,
+  .opening-admin-shell {
+    width: 240px;
+    padding: 22px 14px 16px;
+  }
+
+  body[data-screen^="Admin"] .main-viewport,
+  body[data-screen^="Admin"] .kitchen-viewport {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cm-mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  body.cm-mobile-nav-open .cm-mobile-sidebar-backdrop {
+    display: block;
+  }
+
+  body[data-screen^="Admin"] .canvas {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #fffefc;
+  }
+
+  body[data-screen^="Admin"] .sidebar,
+  .opening-admin-shell {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 276px;
+    height: 100vh;
+    z-index: 1050;
+    transform: translateX(-105%);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 12px 0 32px rgba(0, 0, 0, 0.38);
+  }
+
+  body.cm-mobile-nav-open .sidebar,
+  body.cm-mobile-nav-open .opening-admin-shell {
+    transform: translateX(0);
+  }
+
+  body[data-screen^="Admin"] .main-viewport,
+  body[data-screen^="Admin"] .kitchen-viewport {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    padding-top: 64px !important;
+    overflow-y: visible !important;
+  }
+
+  .cm-settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cm-user-settings-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .cm-settings-actions-right {
+    justify-content: flex-end;
+  }
+}
+
+/* Fluid page transitions and loading spinner visuals */
+.cm-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 254, 252, 0.82);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 500;
+  color: #FF772E;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cm-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 119, 46, 0.2);
+  border-top-color: #FF772E;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "CM's Cake & Pastries Inventory Portal",
+  "description": "Consolidated admin inventory management for CM's Cake & Pastries. Track stock, manage bakery catalog, update pricing, and pre-order limits.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
